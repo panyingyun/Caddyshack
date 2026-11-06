@@ -9,13 +9,13 @@ services:
       - CADDYSHACK_CADDY_API=http://caddy:2019
       - CADDYSHACK_DB=/data/caddyshack.db
       - CADDYSHACK_AUTH_USER=admin
-      - CADDYSHACK_AUTH_PASS=your-secure-password
+      - CADDYSHACK_AUTH_PASS=admin123
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddyshack-data:/data
 
   caddy:
-    image: docker.m.daocloud.io/caddy/caddy:2.6.2-alpine
+    image: docker.m.daocloud.io/library/caddy:2.6.2-alpine
     ports:
       - "80:80"
       - "443:443"
@@ -26,5 +26,3 @@ services:
 volumes:
   caddyshack-data:
   caddy-data:
-
-H
