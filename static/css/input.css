@@ -184,10 +184,23 @@
 
   /* Input styling */
   .input {
-    @apply w-full px-3 py-2.5 text-sm bg-white dark:bg-surface-800 border border-surface-300 dark:border-surface-600 rounded-lg
+    @apply w-full px-3 py-2.5 text-sm text-surface-900 dark:text-white bg-white dark:bg-surface-800 border border-surface-300 dark:border-surface-600 rounded-lg
            placeholder:text-surface-400 dark:placeholder:text-surface-500
            focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500
            transition-all duration-200;
+  }
+
+  .dark .input {
+    color-scheme: dark;
+    caret-color: #fff;
+  }
+
+  .dark .input:-webkit-autofill,
+  .dark .input:-webkit-autofill:hover,
+  .dark .input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    caret-color: #fff;
+    box-shadow: 0 0 0 1000px #27272a inset;
   }
 
   .input-error {

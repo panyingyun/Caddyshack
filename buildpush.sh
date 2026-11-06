@@ -1,5 +1,5 @@
 git pull --rebase
-version=v1.2.0
+version=v1.2.2
 git tag $version
 git push origin master $version
 docker login harbor.michaelapp.com -u admin -p Cjj123
