@@ -95,7 +95,7 @@ go build -ldflags="-w -s" -o caddyshack ./cmd/caddyshack
 docker build -t caddyshack .
 
 # Run with docker-compose (includes Caddy)
-docker-compose -f docker-compose.dev.yml up
+docker-compose -f docker-compose-dev.yml up
 ```
 
 Docker Compose example for production:
