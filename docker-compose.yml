@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  caddyshack:
+    image: harbor.michaelapp.com/caddyshack/caddyshack:v1.2.0
+    ports:
+      - "8080:8080"
+    environment:
+      - CADDYSHACK_CADDYFILE=/etc/caddy/Caddyfile
+      - CADDYSHACK_CADDY_API=http://caddy:2019
+      - CADDYSHACK_DB=/data/caddyshack.db
+      - CADDYSHACK_AUTH_USER=admin
+      - CADDYSHACK_AUTH_PASS=your-secure-password
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddyshack-data:/data
+
+  caddy:
+    image: docker.m.daocloud.io/caddy/caddy:2.6.2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+
+volumes:
+  caddyshack-data:
+  caddy-data:
+
+H

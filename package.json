@@ -4,7 +4,8 @@
   "description": "Tailwind CSS build for Caddyshack",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify",
+    "build": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify && tailwindcss -c ./tailwind.docs.config.js -i ./docs/css/input.css -o ./docs/css/tailwind.css --minify",
+    "build:docs": "tailwindcss -c ./tailwind.docs.config.js -i ./docs/css/input.css -o ./docs/css/tailwind.css --minify",
     "watch": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch"
   },
   "devDependencies": {

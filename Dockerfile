@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.24-alpine AS builder
+FROM docker.m.daocloud.io/library/golang:1.24-alpine AS builder
 
 WORKDIR /app
 
@@ -7,6 +7,8 @@ WORKDIR /app
 RUN apk add --no-cache git nodejs npm
 
 # Copy go mod files first for better caching
+ENV GOPROXY=https://goproxy.cn,https://proxy.golang.org,direct
+ENV GOSUMDB=sum.golang.org
 COPY go.mod go.sum* ./
 RUN go mod download
 
@@ -24,7 +26,7 @@ RUN npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minif
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o caddyshack ./cmd/caddyshack
 
 # Runtime stage
-FROM alpine:3.19
+FROM docker.m.daocloud.io/library/alpine:3.19
 
 WORKDIR /app
 
