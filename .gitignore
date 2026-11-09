@@ -52,3 +52,5 @@ build/
 # Development files
 dev/Caddyfile
 Caddyfile
+buildpush.sh
+build_push.sh
